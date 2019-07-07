@@ -10,22 +10,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity httpSecurity) throws Exception {
-		httpSecurity.csrf().disable().authorizeRequests().antMatchers("/").permitAll().and().authorizeRequests()
-				.antMatchers("/console/**").permitAll()
-				.antMatchers("/list/**").permitAll()
-				.antMatchers("/product/**").permitAll();
+		httpSecurity.csrf().disable().authorizeRequests()
+				.antMatchers("/product/**").authenticated().and().httpBasic();
 		httpSecurity.headers().frameOptions().disable();
-		
 	}
-	
-// 	@Override
-// 	protected void configure(HttpSecurity http) throws Exception {
-// 		http.authorizeRequests().antMatchers("/**").hasRole("USER").and().formLogin();
-// 	}
 
+	// Implement this method to provide jdbc,ldap or token authentication
  	@Override
  	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
- 		auth.inMemoryAuthentication().withUser("user").password("password").roles("USER");
+ 		auth.inMemoryAuthentication().withUser("user").password("{noop}password").roles("USER");
  	}
 }
 

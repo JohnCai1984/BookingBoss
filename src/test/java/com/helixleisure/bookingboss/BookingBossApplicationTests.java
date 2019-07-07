@@ -8,19 +8,12 @@ import com.helixleisure.bookingboss.model.vo.ProductWrapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.*;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.MvcResult;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.web.client.RestTemplate;
-
 
 import java.time.Instant;
 import java.util.ArrayList;
@@ -29,7 +22,6 @@ import java.util.UUID;
 
 import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
-
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment=WebEnvironment.RANDOM_PORT)
@@ -61,7 +53,7 @@ public class BookingBossApplicationTests{
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<ProductRetrieveFormWrapper> requestEntity = new HttpEntity<ProductRetrieveFormWrapper>(prdRtrFormWrapper, headers);
 
-		ResponseEntity<ProductWrapper> response = restTemplate.exchange(
+		ResponseEntity<ProductWrapper> response = restTemplate.withBasicAuth("user","password").exchange(
 				uri,
 				HttpMethod.POST,
 				requestEntity,
@@ -69,7 +61,7 @@ public class BookingBossApplicationTests{
 
 		HttpStatus status = response.getStatusCode();
 		assertEquals(HttpStatus.OK, status);
-		assertTrue(response.getBody().getProducts().size() == 2);
+		assertTrue(response.getBody().getProducts().size() >= 1);
 	}
 
 	@Test
@@ -93,7 +85,7 @@ public class BookingBossApplicationTests{
 		headers.setContentType(MediaType.APPLICATION_JSON);
 		HttpEntity<ProductCreationFormWrapper> requestEntity = new HttpEntity<ProductCreationFormWrapper>(prodCreFormWrapper, headers);
 
-		ResponseEntity<ProductWrapper> response = restTemplate.exchange(
+		ResponseEntity<ProductWrapper> response = restTemplate.withBasicAuth("user","password").exchange(
 				uri,
 				HttpMethod.POST,
 				requestEntity,

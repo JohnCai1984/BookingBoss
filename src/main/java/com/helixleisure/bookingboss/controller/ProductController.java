@@ -4,18 +4,14 @@ import com.helixleisure.bookingboss.model.form.ProductCreationForm;
 import com.helixleisure.bookingboss.model.form.ProductCreationFormWrapper;
 import com.helixleisure.bookingboss.model.form.ProductRetrieveForm;
 import com.helixleisure.bookingboss.model.form.ProductRetrieveFormWrapper;
+import com.helixleisure.bookingboss.model.vo.ProductVO;
+import com.helixleisure.bookingboss.model.vo.ProductWrapper;
+import com.helixleisure.bookingboss.service.ProductService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import com.helixleisure.bookingboss.service.ProductService;
-import com.helixleisure.bookingboss.model.vo.ProductWrapper;
-import com.helixleisure.bookingboss.model.vo.ProductVO;
-
-
-import org.springframework.http.MediaType;
 
 import java.time.Instant;
 import java.util.List;
