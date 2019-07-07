@@ -1,7 +1,10 @@
 
 1) How to run the application
 #We can run the spring boot application using the following maven command.
-mvn spring-boot:run or java -jar BookingBoss.jar
+mvn spring-boot:run
+or
+export as JAR file and run below command:
+java -jar BookingBoss.jar
 
 
 2)Restful API Doc
@@ -15,13 +18,6 @@ http://localhost:8081/bookingboss/swagger-ui.html
 3) Convert Swagger API Doc To AsciiDoc
 Use Swagger2MarkupTest.java to generate AsciiDoc and save to location: target/docs/asciidoc/generated.
 In the future, based on the generated asciidoc, can use swagger2markup libraries to convert to HTML5 or PDF document.
-
-
-Use defualt swagger url
-#Authentication
-WebConfiguration
-UserDetailsServiceAutoConfiguration
-Using generated security password: 01a33889-98f1-43df-bd99-70e30901df7e
 
 
 4) H2 Database Console URL
