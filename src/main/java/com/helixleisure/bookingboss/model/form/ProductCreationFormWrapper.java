@@ -5,7 +5,7 @@ import java.time.Instant;
 import java.util.List;
 
 /**
- * ClassName:ProductInputForm
+ * ClassName:ProductCreationFormWrapper
  * Function: TODO ADD FUNCTION
  * Reason:	 TODO ADD REASON
  *

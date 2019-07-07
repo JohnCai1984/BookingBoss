@@ -1,13 +1,11 @@
 package com.helixleisure.bookingboss.model.form;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.List;
 
 /**
- * ClassName:ProductInputForm
+ * ClassName:ProductRetrieveFormWrapper
  * Function: TODO ADD FUNCTION
  * Reason:	 TODO ADD REASON
  *
